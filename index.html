@@ -4,47 +4,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>متجري - عرض وبيع المنتجات</title>
+    <title>متجري الاحترافي</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Fonts -->
+    <!-- Fonts: Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- Babel Standalone -->
+    <!-- Babel Standalone for TSX -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
-      body { font-family: 'Tajawal', sans-serif; margin: 0; padding: 0; }
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background-color: #f8fafc;
+        margin: 0;
+      }
       #error-display {
         display: none;
         position: fixed;
         top: 0; left: 0; right: 0;
-        background: #fee2e2;
-        color: #b91c1c;
-        padding: 10px;
+        background: #ef4444;
+        color: white;
+        padding: 15px;
         text-align: center;
         z-index: 9999;
-        font-family: sans-serif;
-        border-bottom: 2px solid #ef4444;
+        font-size: 14px;
+        font-weight: bold;
       }
-      .loading-container {
+      .loading-screen {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         height: 100vh;
-        background: #f9fafb;
       }
       .loader {
-        border: 4px solid #f3f3f3;
+        border: 4px solid #e2e8f0;
         border-top: 4px solid #3b82f6;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 45px;
+        height: 45px;
         animation: spin 1s linear infinite;
       }
       @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -65,23 +68,30 @@
   </head>
   <body>
     <div id="error-display"></div>
+    
     <div id="root">
-      <div class="loading-container">
+      <div class="loading-screen">
         <div class="loader"></div>
-        <p style="margin-top: 15px; color: #666;">جاري تشغيل المتجر...</p>
+        <p style="margin-top: 20px; color: #64748b; font-weight: 500;">جاري فتح المتجر...</p>
       </div>
     </div>
 
     <script>
-      // كاشف أخطاء التحميل
+      // كشف الأخطاء المبكر
       window.onerror = function(msg, url, line) {
-        document.getElementById('error-display').style.display = 'block';
-        document.getElementById('error-display').innerHTML = 'خطأ في التحميل: ' + msg + ' (Line: ' + line + ')';
+        const errDiv = document.getElementById('error-display');
+        errDiv.style.display = 'block';
+        errDiv.innerHTML = '⚠️ حدث خطأ تقني: ' + msg + ' في السطر ' + line;
         return false;
       };
-      console.log("HTML Loaded, waiting for React...");
     </script>
 
-    <script type="text/babel" data-type="module" data-presets="react,typescript" src="./index.tsx"></script>
+    <!-- تحميل التطبيق -->
+    <script 
+      type="text/babel" 
+      data-type="module" 
+      data-presets="react,typescript" 
+      src="index.tsx">
+    </script>
   </body>
 </html>
