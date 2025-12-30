@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Babel Standalone: محول الكود للتشغيل المباشر -->
+    <!-- Babel Standalone -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
@@ -22,20 +22,28 @@
         font-family: 'Tajawal', sans-serif;
         scroll-behavior: smooth;
       }
-      ::-webkit-scrollbar { width: 8px; }
-      ::-webkit-scrollbar-track { background: #f1f1f1; }
-      ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
-      ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+      #error-display {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background: #fee2e2;
+        color: #b91c1c;
+        padding: 1rem;
+        text-align: center;
+        z-index: 9999;
+        direction: ltr;
+        font-family: monospace;
+      }
     </style>
 
-    <!-- تعريف المكتبات الخارجية فقط -->
+    <!-- تعريف المكتبات بإصدارات متوافقة وحذف التضارب -->
     <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@18.2.0",
     "react-dom": "https://esm.sh/react-dom@18.2.0",
     "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.11.2",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.11.2?external=react,react-dom",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/"
   }
@@ -43,13 +51,25 @@
 </script>
   </head>
   <body class="bg-gray-50 text-gray-900">
+    <div id="error-display"></div>
     <div id="root">
-      <div class="flex items-center justify-center min-h-screen text-gray-500">
-        جاري تحميل المتجر...
+      <div class="flex items-center justify-center min-h-screen text-gray-500 flex-col gap-4">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <p>جاري تحميل المتجر...</p>
       </div>
     </div>
 
-    <!-- تشغيل ملف الدخول الرئيسي -->
+    <!-- كود بسيط لاكتشاف الأخطاء البرمجية وإظهارها -->
+    <script>
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        var display = document.getElementById('error-display');
+        display.style.display = 'block';
+        display.innerHTML = 'Error: ' + msg + ' at line ' + lineNo;
+        console.error(error);
+        return false;
+      };
+    </script>
+
     <script 
       type="text/babel" 
       data-type="module" 
