@@ -1,11 +1,17 @@
-<div align="center">
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# متجر إلكتروني بسيط (React Static Store)
 
-  <h1>Built with AI Studio</h2>
+هذا الموقع جاهز للنشر على **GitHub Pages**.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## طريقة النشر:
+1. ارفع جميع الملفات إلى مستودع (Repository) جديد على GitHub.
+2. انتقل إلى **Settings** > **Pages**.
+3. اختر فرع **main** (أو master) واضغط **Save**.
+4. سيظهر لك رابط الموقع بعد دقائق.
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+## ملاحظات:
+- تم استخدام `HashRouter` لضمان عمل الروابط بدون مشاكل 404.
+- بيانات الطلبات تُخزن في `localStorage` للمتصفح.
+- بيانات الدخول للوحة التحكم:
+  - اسم المستخدم: `admin`
+  - كلمة المرور: `rami`
