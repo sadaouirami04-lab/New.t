@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
-import { Product, Order, AuthState } from './types';
-import { PRODUCTS, WHATSAPP_NUMBER } from './constants';
+import { Product, Order, AuthState } from './types.ts';
+import { PRODUCTS, WHATSAPP_NUMBER } from './constants.ts';
 
 // --- Helper Components ---
 

@@ -1,5 +1,5 @@
 
-import { Product } from './types';
+import { Product } from './types.ts';
 
 export const WHATSAPP_NUMBER = "+213555555555"; // Replace with your actual number
 

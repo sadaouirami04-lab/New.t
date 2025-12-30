@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Babel Standalone: ضروري لتشغيل ملفات .tsx مباشرة في المتصفح على GitHub -->
+    <!-- Babel Standalone: محول الكود للتشغيل المباشر -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <style>
@@ -28,7 +28,7 @@
       ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
     </style>
 
-    <!-- تعريف المكتبات -->
+    <!-- تعريف المكتبات الخارجية فقط -->
     <script type="importmap">
 {
   "imports": {
@@ -43,12 +43,13 @@
 </script>
   </head>
   <body class="bg-gray-50 text-gray-900">
-    <div id="root"></div>
+    <div id="root">
+      <div class="flex items-center justify-center min-h-screen text-gray-500">
+        جاري تحميل المتجر...
+      </div>
+    </div>
 
-    <!-- 
-      تنبيه: نستخدم type="text/babel" مع data-type="module" و data-presets="react,typescript"
-      ليقوم Babel بتحويل كود TypeScript/JSX إلى JavaScript يفهمه المتصفح.
-    -->
+    <!-- تشغيل ملف الدخول الرئيسي -->
     <script 
       type="text/babel" 
       data-type="module" 
