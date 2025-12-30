@@ -5,30 +5,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>متجري - عرض وبيع المنتجات</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Babel Standalone: ضروري لتشغيل ملفات .tsx مباشرة في المتصفح على GitHub -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <style>
       body {
         font-family: 'Tajawal', sans-serif;
         scroll-behavior: smooth;
       }
-      /* تحسين مظهر السكرول بار */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #f1f1f1; }
+      ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
     </style>
+
+    <!-- تعريف المكتبات -->
     <script type="importmap">
 {
   "imports": {
@@ -36,15 +36,24 @@
     "react-dom": "https://esm.sh/react-dom@18.2.0",
     "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
     "react-router-dom": "https://esm.sh/react-router-dom@6.11.2",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
   </head>
   <body class="bg-gray-50 text-gray-900">
     <div id="root"></div>
-    <!-- استدعاء ملف التشغيل الرئيسي -->
-    <script type="module" src="./index.tsx"></script>
+
+    <!-- 
+      تنبيه: نستخدم type="text/babel" مع data-type="module" و data-presets="react,typescript"
+      ليقوم Babel بتحويل كود TypeScript/JSX إلى JavaScript يفهمه المتصفح.
+    -->
+    <script 
+      type="text/babel" 
+      data-type="module" 
+      data-presets="react,typescript" 
+      src="./index.tsx">
+    </script>
   </body>
 </html>
