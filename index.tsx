@@ -3,30 +3,34 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 
-const init = () => {
-  try {
-    const rootElement = document.getElementById('root');
-    if (!rootElement) return;
+console.log("index.tsx starting...");
 
-    const root = ReactDOM.createRoot(rootElement);
+const renderApp = () => {
+  try {
+    const container = document.getElementById('root');
+    if (!container) throw new Error("Root element not found");
+
+    console.log("Found root, rendering...");
+    const root = ReactDOM.createRoot(container);
     root.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>
     );
-  } catch (err) {
-    console.error("Failed to render app:", err);
-    const errorDisplay = document.getElementById('error-display');
-    if (errorDisplay) {
-      errorDisplay.style.display = 'block';
-      errorDisplay.innerText = "فشل في تشغيل المتجر: " + (err as Error).message;
+    console.log("App rendered successfully!");
+  } catch (error) {
+    console.error("Render error:", error);
+    const display = document.getElementById('error-display');
+    if (display) {
+      display.style.display = 'block';
+      display.innerText = "حدث خطأ أثناء التشغيل: " + (error as Error).message;
     }
   }
 };
 
-// الانتظار قليلاً للتأكد من تحميل كافة التبعيات
+// تشغيل فوري
 if (document.readyState === 'complete') {
-  init();
+  renderApp();
 } else {
-  window.addEventListener('load', init);
+  window.addEventListener('load', renderApp);
 }
